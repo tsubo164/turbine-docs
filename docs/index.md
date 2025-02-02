@@ -2,7 +2,7 @@
 
 ## Tutorial
 
-```turbine
+```C
 // comment
 print("Hello, Wrold!")
 ```
