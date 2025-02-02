@@ -1,17 +1,32 @@
+<!DOCTYPE html>
+<html>
 <head>
-    <!--
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />≈
+    <meta charset="UTF-8">
+    <title>{{ page.title }}</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <h1>{{ page.title }}</h1>
+    </header>
+    
+    <main>
+        {{ content }}
+    </main>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.js"></script>
     <script>
-        Prism.languages.turbine = {
-          'comment': /#.*$/m, // # から行末までをコメントとして認識
-          'keyword': /\b(if|else|while|return|func)\b/, // 予約語
-          'string': /"(?:\\.|[^"\\])*"/, // 文字列
-          'number': /\b\d+\b/, // 数値
-          'operator': /[-+*/=<>!]+/, // 演算子
-          'punctuation': /[{}(),;]/, // 括弧やセミコロン
-          'variable': /\b[a-zA-Z_][a-zA-Z0-9_]*\b/ // 変数名
-          };
+        document.addEventListener("DOMContentLoaded", function () {
+            Prism.languages.turbine = {
+                'comment': /#.*$/m,
+                'keyword': /\b(if|else|while|return|func)\b/,
+                'string': /"(?:\\.|[^"\\])*"/,
+                'number': /\b\d+\b/,
+                'operator': /[-+*/=<>!]+/,
+                'punctuation': /[{}(),;]/,
+                'variable': /\b[a-zA-Z_][a-zA-Z0-9_]*\b/
+            };
+        });
     </script>
-    -->
-</head>
+</body>
+</html>
