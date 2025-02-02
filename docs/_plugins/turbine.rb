@@ -3,7 +3,7 @@
 #class Rouge::Lexers::Turbine < Rouge::RegexLexer
 module Rouge
   module Lexers
-    class Python < RegexLexer
+    class Turbine < RegexLexer
       title "Turbine"
       desc "Turbine programming language"
       tag "turbine"
