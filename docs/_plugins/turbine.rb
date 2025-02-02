@@ -1,8 +1,9 @@
 require 'rouge'
 
 class Rouge::Lexers::MyLang < Rouge::Lexer
-  title "turbine"
+  title "Turbine"
   desc "Turbine programming language"
+  tag "turbine"
 
   state :root do
     rule /\b(if|else|return|print)\b/, Keyword
