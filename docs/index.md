@@ -2,22 +2,27 @@
 
 ## Tutorial
 
+```turbine
+// comment
+print("turbine!")
+```
+
 ```C
 // comment
-print("Hello, Wrold!")
+print("C!")
 ```
 
 ```c
 // comment
-print("Hello, Wrold!")
+print("c!")
 ```
 
 ```Python
 # comment
-print("Hello, Wrold!")
+print("Python!")
 ```
 
 ```python
 # comment
-print("Hello, Wrold!")
+print("python!")
 ```
