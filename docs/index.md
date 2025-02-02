@@ -6,6 +6,10 @@
 // comment
 print("turbine!")
 ```
+```Turbine
+# comment
+print("turbine!")
+```
 
 ```C
 // comment
