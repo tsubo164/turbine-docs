@@ -6,7 +6,7 @@ module Rouge
     class Turbine < RegexLexer
       title "Turbine"
       desc "Turbine programming language"
-      tag "turbine"
+      tag 'turbine'
     
       state :root do
         rule /\b(if|else|return|print)\b/, Keyword
