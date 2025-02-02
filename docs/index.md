@@ -4,9 +4,9 @@
 
 ```turbine
 // comment
-print("turbine!")
+return print("turbine!")
 ```
-```Turbine
+```turbine
 # comment
 print("turbine!")
 ```
