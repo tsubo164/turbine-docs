@@ -1,6 +1,6 @@
 require 'rouge'
 
-class Rouge::Lexers::Turbine < Rouge::Lexer
+class Rouge::Lexers::Turbine < Rouge::RegexLexer
   title "Turbine"
   desc "Turbine programming language"
   tag "turbine"
