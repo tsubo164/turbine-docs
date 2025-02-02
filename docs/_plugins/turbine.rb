@@ -1,4 +1,4 @@
-#require 'rouge'
+require 'rouge'
 
 #class Rouge::Lexers::Turbine < Rouge::RegexLexer
 module Rouge
