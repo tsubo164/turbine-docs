@@ -6,14 +6,6 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <h1>{{ page.title }}</h1>
-    </header>
-    
-    <main>
-        {{ content }}
-    </main>
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.js"></script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
@@ -28,5 +20,13 @@
             };
         });
     </script>
+    
+    <header>
+        <h1>{{ page.title }}</h1>
+    </header>
+    
+    <main>
+        {{ content }}
+    </main>
 </body>
 </html>
