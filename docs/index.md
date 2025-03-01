@@ -1,19 +1,19 @@
 # Turbine programming language
 
-## Language in 5 mins
+## Language Overview
 
 ### Hello, World!
 
 ```cpp
 // Prints "Hello, World" in console
-# main(args []string) int
+# main(args vec{string}) int
   print("Hello, World!")
   return 0
 ```
 
 ### Variables
 ```cpp
-# main(args []string) int
+# main(args vec{string}) int
   - a int        // int with default value zero
   - b = 42       // int type from initializer type
   - c int = 77   // verbose with both type and initializer
@@ -23,7 +23,7 @@
 
 ### Primitive types
 ```cpp
-# main(args []string) int
+# main(args vec{string}) int
   - b = false       // bool
   - i = 42          // int
   - f = 3.14        // float
@@ -34,11 +34,17 @@
 
 ### Collection types
 ```cpp
-# main(args []string) int
-  - l = [11, 22, 33]           // list of int
-  - m = {"foo":42, "bar":99}   // map of string => int
-  print(l)                     // > [11, 22, 33]
-  print(m)                     // > {foo:42, bar:99}
+# main(args vec{string}) int
+  - v = vec{11, 22, 33}             // vector of int
+  - m = map{"foo":42, "bar":99}     // map of string => int
+  - s = set{212.09, 584.23, 927.32} // set of float
+  - k = stack{int}                  // stack of int
+  - q = queue{string}               // queue of string
+  print(v)                          // > {11, 22, 33}
+  print(m)                          // > {foo:42, bar:99}
+  print(s)                          // > {foo:42, bar:99}
+  print(k)                          // > {}
+  print(q)                          // > {}
   return 0
 ```
 
@@ -48,9 +54,9 @@
   - x float
   - y float
 
-# main(args []string) int
-  - p = Point{x=11.1, y=22.2}  // Point struct
-  print(p)                     // > {11.1, 22.2}
+# main(args vec{string}) int
+  - p = Point{x=11.1, y=22.2} // Point struct
+  print(p)                    // > {11.1, 22.2}
   return 0
 ```
 
@@ -71,10 +77,20 @@
   - Nov    , "November"   , 11
   - Dec    , "December"   , 12
 
-# main(args []string) int
-  - m = Month.Oct  // Month enum
-  print(m)         // > Oct
-  print(m.name)    // > October
-  print(m.num)     // > 10
+# main(args vec{string}) int
+  - m = Month.Oct // Month enum
+  print(m)        // > Oct
+  print(m.name)   // > October
+  print(m.num)    // > 10
+  return 0
+```
+
+### Module
+```cpp
+> math
+
+# main(args vec{string}) int
+  print(math._PI_)     // > 3.14
+  print(math.sqrt(25)) // > 5
   return 0
 ```
