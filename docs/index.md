@@ -2,6 +2,23 @@
 
 ## Language Overview
 
+Turbine is a simple, statically typed, procedural programming language
+with an explicit, markdown-like syntax.
+
+## Implementation
+
+Turbine compiles to bytecode, which is executed on the Turbine Virtual
+Machine (Turbine VM) written in C11.
+
+## Index
+- [Getting Started] (#GettingStarted)
+- Tutorial
+- [Bytecode/VM Specification] ()
+- Language/Module Reference
+- Language Specification
+
+## GettingStarted
+
 ### Hello, World!
 
 ```cpp
