@@ -14,7 +14,7 @@
 
 ## Table of Contents
 - Getting Started
-- Tutorials
+- [Tutorials] (tutorial.md)
 - References
 - Language Specification
 - Bytecode Specification
@@ -109,7 +109,7 @@
 > math
 
 # main(args vec{string}) int
-  print(math._PI_)     // > 3.14
+  print(math._PI_)     // > 3.14159
   print(math.sqrt(25)) // > 5
   return 0
 ```
