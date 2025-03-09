@@ -13,7 +13,7 @@
 - Compler and VM are written in C11
 
 ## Table of Contents
-- [Getting Started] (#language_at_a_glance)
+- [Language at a Glance](#language_at_a_glance)
 - [Tutorials](tutorials.md)
 - References
 - Language Specification
