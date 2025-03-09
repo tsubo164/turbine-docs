@@ -13,13 +13,13 @@
 - Compler and VM are written in C11
 
 ## Table of Contents
-- Getting Started
-- [Tutorials] (tutorial.md)
+- [Getting Started] (#language_at_a_glance)
+- [Tutorials] (tutorials.html)
 - References
 - Language Specification
 - Bytecode Specification
 
-## Language at a Glance
+## Language at a Glance {#language_at_a_glance}
 
 ### Hello, World!
 
