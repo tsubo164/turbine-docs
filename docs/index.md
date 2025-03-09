@@ -14,7 +14,7 @@
 
 ## Table of Contents
 - [Getting Started] (#language_at_a_glance)
-- [Tutorials](https://tsubo164.github.io/turbine-docs/tutorials.html)
+- [Tutorials](tutorials.md)
 - References
 - Language Specification
 - Bytecode Specification
