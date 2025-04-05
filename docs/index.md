@@ -82,7 +82,7 @@
 ### Enum type
 ```cpp
 ## Month enum
-  - symbol , name         , num
+  : symbol , name         , num
   - Jan    , "January"    , 1
   - Feb    , "February"   , 2
   - Mar    , "March"      , 3
