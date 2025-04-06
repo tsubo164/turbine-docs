@@ -1,5 +1,12 @@
 # Turbine programming language
 
+## Introduction
+Turbine is a lightweight, high-performance programming language
+designed for simplicity and clarity. It offers a structured
+yet flexible syntax, making it easy to read and write.
+Turbine emphasizes direct solutions to problems rather than
+complex abstractions.
+
 ## Language Overview
 
 - Statically typed
@@ -15,7 +22,7 @@
 ## Table of Contents
 - [Language at a Glance](#language_at_a_glance)
 - [Tutorials](tutorials.md)
-- References
+- [Reference of Built-in Functions](builtin_functions.md)
 - Language Specification
 - Bytecode Specification
 

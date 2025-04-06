@@ -4,7 +4,6 @@
 
 - [Turbine Tutorials](#turbine-tutorials)
   - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
   - [Hello, World!](#hello-world)
     - [Indentation and Block Structure](#indentation-and-block-structure)
     - [Line Breaks Inside Expressions](#line-breaks-inside-expressions)
@@ -40,13 +39,6 @@
   - [Built-in Functions](#built-in-functions)
     - [I/O Functions](#io-functions)
     - [Collection Functions](#collection-functions)
-
-## Introduction
-Turbine is a lightweight, high-performance programming language
-designed for simplicity and clarity. It offers a structured
-yet flexible syntax, making it easy to read and write.
-Turbine emphasizes direct solutions to problems rather than
-complex abstractions.
 
 ## Hello, World!
 The following example demonstrates a simple "Hello, World!" program in Turbine.
