@@ -14,6 +14,7 @@
     - [Collection Types](#collection-types)
     - [Variable Declaration](#variable-declaration)
     - [Type Inference](#type-inference)
+    - [Variable Scope](#variable-scope)
     - [Global Variables](#global-variables)
     - [Literals](#literals)
   - [Expressions and Arithmetic Operators](#expressions-and-arithmetic-operators)
@@ -30,9 +31,9 @@
     - [switch Statement](#switch-statement)
     - [return Statement](#return-statement)
     - [nop Statement](#nop-statement)
-  - [Function Definition](#function-definition)
-  - [Calling Functions](#calling-functions)
-  - [Scope](#scope)
+  - [Functions](#functions)
+    - [Function Definition](#function-definition)
+    - [Calling Functions](#calling-functions)
   - [Module Import](#module-import)
     - [Built-in Modules](#built-in-modules)
     - [User-defined Modules](#user-defined-modules)
@@ -151,6 +152,24 @@ Turbine supports type inference, allowing you to omit the type when an initializ
 - greeting = "Hello"  // Inferred as string
 ```
 
+### Variable Scope
+
+Turbine supports nested scopes using `---`:
+
+```cpp
+- x int = 10
+
+---
+  - y int = 5
+  print(x + y)
+---
+  print(x)
+  // y is not accessible here
+```
+
+- Variables declared in a scope are local to that scope.
+- Outer variables are accessible inside inner scopes, but not vice versa.
+
 ### Global Variables
 
 Global variables are declared the same way as local variables but must be named using a single underscore on both sides, such as _count_ or _CONFIG_. This naming convention is required to clearly distinguish globals from local variables.
@@ -161,8 +180,6 @@ Global variables are declared the same way as local variables but must be named 
 ```
 
 Global variables are accessible throughout the entire module and can be shared across imported modules.
-
-More advanced topics, such as operations on collections, will be covered in later sections.
 
 ### Literals
 
@@ -464,9 +481,11 @@ if debug
 - Useful in conditional branches or loops where no operation is needed.
 - Can be used to reserve space for future code.
 
-## Function Definition
+## Functions
 
-Functions in Turbine are declared using the # symbol followed by the function signature. Each function can have zero or more parameters, and it must specify a return type.
+### Function Definition
+
+Functions in Turbine are declared using the `#` symbol followed by the function signature. Each function can have zero or more parameters, and it can specify a return type. 
 
 ```cpp
 # add(a int, b int) int
@@ -483,32 +502,14 @@ You can omit the return type if the function doesn't return a value:
   print("Hello, " + name)
 ```
 
-## Calling Functions
+### Calling Functions
 
-Functions are called using their name and arguments:
+To call a function, use the function name followed by the arguments in parentheses:
 
 ```cpp
 - result int = add(3, 5)
 greet("Turbine")
 ```
-
-## Scope
-
-Turbine supports nested scopes using `---`:
-
-```cpp
-- x int = 10
-
----
-  - y int = 5
-  print(x + y)
----
-  print(x)
-  // y is not accessible here
-```
-
-- Variables declared in a scope are local to that scope.
-- Outer variables are accessible inside inner scopes, but not vice versa.
 
 ## Module Import
 
