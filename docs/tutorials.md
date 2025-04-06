@@ -11,9 +11,11 @@
     - [Comments](#comments)
   - [Variables and Data Types](#variables-and-data-types)
     - [Basic Types](#basic-types)
-    - [Compound Types](#compound-types)
+    - [Collection Types](#collection-types)
     - [Variable Declaration](#variable-declaration)
     - [Type Inference](#type-inference)
+    - [Global Variables](#global-variables)
+    - [Literals](#literals)
   - [Expressions and Arithmetic Operators](#expressions-and-arithmetic-operators)
     - [Arithmetic Operators](#arithmetic-operators)
     - [Comparison Operators](#comparison-operators)
@@ -34,6 +36,9 @@
   - [Module Import](#module-import)
     - [Built-in Modules](#built-in-modules)
     - [User-defined Modules](#user-defined-modules)
+  - [Built-in Functions](#built-in-functions)
+    - [I/O Functions](#io-functions)
+    - [Collection Functions](#collection-functions)
 
 ## Introduction
 Turbine is a lightweight, high-performance programming language
@@ -115,7 +120,7 @@ Turbine uses explicit type declarations for variables. The syntax follows a stra
 - `string` → Textual data.
 - `bool` → Boolean values (`true` or `false`).
 
-### Compound Types
+### Collection Types
 - `vec{T}` → Dynamic array (vector) of type `T`.
 - `map{K, V}` → Key-value dictionary with keys of type `K` and values of type `V`.
 - `set{T}` → Unordered collection of unique values.
@@ -144,6 +149,64 @@ Turbine supports type inference, allowing you to omit the type when an initializ
 ```cpp
 - e = 2.71828  // Inferred as float
 - greeting = "Hello"  // Inferred as string
+```
+
+### Global Variables
+
+Global variables are declared the same way as local variables but must be named using a single underscore on both sides, such as _count_ or _CONFIG_. This naming convention is required to clearly distinguish globals from local variables.
+
+```cpp
+- _count_ int = 0
+- _CONFIG_ = map{"timeout": 30, "max": 100}
+```
+
+Global variables are accessible throughout the entire module and can be shared across imported modules.
+
+More advanced topics, such as operations on collections, will be covered in later sections.
+
+### Literals
+
+Turbine allows you to assign values directly using literals. These include numbers, strings, booleans, and also collection values like vectors or maps.
+
+**Basic Type Literals**
+
+```cpp
+- i int = 42
+- f float = 3.14
+- s string = "hello"
+- b bool = true
+```
+
+You can explicitly specify the type, but in most cases it's simpler and more common to let Turbine infer the type from the literal:
+
+```cpp
+- i = 42        // inferred as int
+- name = "Bob"  // inferred as string
+- ok = true     // inferred as bool
+```
+
+**Collection Literals**
+
+To define a collection, write the type name followed by a pair of braces `{}` containing the elements.
+
+```cpp
+- v vec{int} = vec{1, 2, 3}
+- m = map{"a": 1, "b": 2}
+- s = set{3, 1, 2}
+- k = stack{1, 2, 3}
+- q = queue{"x", "y", "z"}
+```
+
+Use commas to separate elements. For maps, each key is followed by a colon : and its value.
+
+You can also spread the contents across multiple lines. Line breaks inside the braces are ignored, which helps keep code readable.
+
+```cpp
+- m = map{
+    "width": 100,
+    "height": 200,
+    "depth": 50
+  }
 ```
 
 ## Expressions and Arithmetic Operators
@@ -183,7 +246,7 @@ Expressions can be combined and grouped with parentheses `()` as needed:
 
 ```cpp
 - x = (a + b) * 2
-- result = not (x > 0 and y < 0)
+- result = !(x > 0 && y < 0)
 ```
 
 ### Bitwise Operators
@@ -251,11 +314,13 @@ for i in 10..0, -2
 You can iterate over a vec in two ways:
 
 ```cpp
+- v = vec{10, 20, 30}
+
 for val in v
-  print(val)
+  print(val)  // 10, 20, 30
 
 for i, val in v
-  print(i, ":", val)
+  print(i, ":", val)  // 0 : 10, 1 : 20, 2 : 30
 ```
 
 - The first form gives only the element value.
@@ -266,11 +331,13 @@ for i, val in v
 You can iterate over entries of a map in the order they were added:
 
 ```cpp
+- config = map{"max": 100, "min": 1, "step": 5}
+
 for key, val in config with i
-  print(key, "=", val)
+  print(key, "=", val)  // max = 100, min = 1, step = 5
 
 for val in config
-  print(val)
+  print(val)  // 100, 1, 5
 ```
 
 - The first form gives both the key and value, with an optional index.
@@ -281,9 +348,12 @@ for val in config
 Loops over elements of a set in the order of the element's values:
 
 ```cpp
-for val in s
-  print(val)
+- myset = set{2, 1, 3}
+
+for val in myset
+  print(val)  // 1, 2, 3
 ```
+
 - Elements are visited in the order of their value (sorted order depending on type).
 
 **Stack loop**
@@ -291,9 +361,12 @@ for val in s
 Loops over elements of a stack in the order they were pushed, from bottom to top:
 
 ```cpp
-for val in stk
-  print(val)
+- mystack = stack{1, 2, 3}
+
+for val in mystack
+  print(val)  // 1, 2, 3
 ```
+
 - Note: This does not pop elements; it just iterates over contents.
 
 **Queue loop**
@@ -301,9 +374,12 @@ for val in stk
 Loops over elements of a queue in the order they were enqueued, from front to back:
 
 ```cpp
-for val in q
-  print(val)
+- myqueue = queue{"a", "b", "c"}
+
+for val in myqueue
+  print(val)  // a, b, c
 ```
+
 - Like with stack, this iteration is non-destructive.
 
 ### while Statement
@@ -467,3 +543,69 @@ You can then access the symbols defined within the module in a similar way:
 my_module.some_function()
 my_module._MY_CONSTANT_
 ```
+
+## Built-in Functions
+
+Turbine provides several built-in functions that are useful for basic input/output operations and working with collections. Below are some examples.
+
+### I/O Functions
+Turbine provides built-in functions for input and output operations. Below are some examples:
+
+```cpp
+- name string
+- age int = 25
+
+// Printing to the console
+print("Hello, World!")           // Prints "Hello, World!"
+print("Name: ", name)             // Prints "Name: " followed by the value of 'name'
+print("Age: ", age)               // Prints "Age: 25"
+
+// Reading input from the user
+name = input("Enter your name: ") // Prompts user to enter their name
+
+// Formatting output
+formatted = format("Hello, %s! You are %d years old.", name, age)
+print(formatted)                  // Prints the formatted string
+```
+
+Example Output:
+
+```
+Hello, World!
+Name: John
+Age: 25
+Hello, John! You are 25 years old.
+```
+
+### Collection Functions
+
+Turbine provides several built-in functions for working with collections such as vectors, maps, and stacks. Some examples are as follows:
+
+```cpp
+- v = vec{10, 20, 30}
+- m = map{"key1": 1, "key2": 2}
+- s = stack{1, 2, 3}
+
+// Vector functions
+vecpush(v, 40)        // Adds 40 to the end of the vector
+print(veclen(v))      // Prints the length of the vector (4)
+print(v)              // Prints the contents of the vector
+
+// Stack functions
+stackpop(s)           // Pops the top element from the stack (3)
+print(s)              // Prints the updated stack {1, 2}
+
+// Map functions
+print(mapkeys(m))     // Prints the keys of the map {key1, key2}
+```
+
+Example Output:
+
+```
+{10, 20, 30, 40}
+4
+{1, 2}
+{key1, key2}
+```
+
+These are just a few examples of the functions available for collection manipulation. For more advanced operations, refer to the library reference.
