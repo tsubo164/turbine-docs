@@ -1,8 +1,8 @@
-# Reference of Turbine Built-in Functions
+# Turbine Built-in Functions Documentation
 
 ## Table of Contents
 
-- [Reference of Turbine Built-in Functions](#reference-of-turbine-built-in-functions)
+- [Turbine Built-in Functions Documentation](#turbine-built-in-functions-documentation)
   - [Table of Contents](#table-of-contents)
   - [I/O and General Utilities](#io-and-general-utilities)
     - [`print(...)`](#print)
@@ -15,6 +15,25 @@
     - [`veclen(v vec{T}) int`](#veclenv-vect-int)
     - [`vecpush(v vec{T}, val T)`](#vecpushv-vect-val-t)
     - [`vecclear(v vec{T})`](#vecclearv-vect)
+  - [Map Functions](#map-functions)
+    - [`maplen(m map{K, V}) int`](#maplenm-mapk-v-int)
+  - [Set Functions](#set-functions)
+    - [`setlen(s set{T}) int`](#setlens-sett-int)
+    - [`setadd(s set{T}, val T)`](#setadds-sett-val-t)
+    - [`setcontains(s set{T}, val T) bool`](#setcontainss-sett-val-t-bool)
+    - [`setremove(s set{T}, val T)`](#setremoves-sett-val-t)
+  - [Stack Functions](#stack-functions)
+    - [`stacklen(s stack{T}) int`](#stacklens-stackt-int)
+    - [`stackempty(s stack{T}) bool`](#stackemptys-stackt-bool)
+    - [`stackpush(s stack{T}, val T)`](#stackpushs-stackt-val-t)
+    - [`stackpop(s stack{T}) T`](#stackpops-stackt-t)
+    - [`stacktop(s stack{T}) T`](#stacktops-stackt-t)
+  - [Queue Functions](#queue-functions)
+    - [`queuelen(q queue{T}) int`](#queuelenq-queuet-int)
+    - [`queueempty(q queue{T}) bool`](#queueemptyq-queuet-bool)
+    - [`queuepush(q queue{T}, val T)`](#queuepushq-queuet-val-t)
+    - [`queuepop(q queue{T}) T`](#queuepopq-queuet-t)
+    - [`queuefront(q queue{T}) T`](#queuefrontq-queuet-t)
 
 ## I/O and General Utilities
 
@@ -118,4 +137,193 @@ Removes all elements from the vector.
 - v = vec{1, 2, 3}
   vecclear(v)
   print(veclen(v)) // => 0
+```
+
+## Map Functions
+
+### `maplen(m map{K, V}) int`
+
+Returns the number of key-value pairs in the map.
+
+**Example**
+
+```cpp
+- m = map{"a": 1, "b": 2}
+  print(maplen(m)) // => 2
+```
+
+## Set Functions
+
+### `setlen(s set{T}) int`
+
+Returns the number of elements in the set.
+
+**Example**
+
+```cpp
+- s = set{1, 2, 3}
+  print(setlen(s)) // => 3
+```
+
+### `setadd(s set{T}, val T)`
+
+Adds a value to the set.
+
+**Example**
+
+```cpp
+- s = set{1, 2}
+  setadd(s, 3)
+  print(s) // => set{1, 2, 3}
+```
+
+### `setcontains(s set{T}, val T) bool`
+
+Returns true if the set contains the given value.
+
+**Example**
+
+```cpp
+- s = set{1, 2, 3}
+  print(setcontains(s, 2)) // => true
+```
+
+### `setremove(s set{T}, val T)`
+
+Removes the given value from the set.
+
+**Example**
+
+```cpp
+- s = set{1, 2, 3}
+  setremove(s, 2)
+  print(setcontains(s, 2)) // => false
+```
+
+## Stack Functions
+
+### `stacklen(s stack{T}) int`
+
+Returns the number of elements in the stack.
+
+**Example**
+
+```cpp
+- s = stack{1, 2, 3}
+  print(stacklen(s)) // => 3
+```
+
+### `stackempty(s stack{T}) bool`
+
+Returns true if the stack is empty.
+
+**Example**
+
+```cpp
+- s = stack{1, 2}
+  print(stackempty(s)) // => false
+  stackpop(s)
+  stackpop(s)
+  print(stackempty(s)) // => true
+```
+
+### `stackpush(s stack{T}, val T)`
+
+Pushes a value onto the top of the stack.
+
+**Example**
+
+```cpp
+- s = stack{}
+  stackpush(s, 42)
+  stackpush(s, 99)
+  print(s) // => stack{42, 99}
+```
+
+### `stackpop(s stack{T}) T`
+
+Removes and returns the top element of the stack.
+
+**Example**
+
+```cpp
+- s = stack{1, 2, 3}
+  - top = stackpop(s)
+  print(top) // => 3
+  print(s) // => stack{1, 2}
+```
+
+### `stacktop(s stack{T}) T`
+
+Returns the top element of the stack without removing it.
+
+**Example**
+
+```cpp
+- s = stack{1, 2, 3}
+  print(stacktop(s)) // => 3
+```
+
+## Queue Functions
+
+### `queuelen(q queue{T}) int`
+
+Returns the number of elements in the queue.
+
+**Example**
+
+```cpp
+- q = queue{1, 2, 3}
+  print(queuelen(q)) // => 3
+```
+
+### `queueempty(q queue{T}) bool`
+
+Returns true if the queue is empty.
+
+**Example**
+
+```cpp
+- q = queue{1, 2}
+  print(queueempty(q)) // => false
+  queuepop(q)
+  queuepop(q)
+  print(queueempty(q)) // => true
+```
+
+### `queuepush(q queue{T}, val T)`
+
+Adds an element to the back of the queue.
+
+**Example**
+
+```cpp
+- q = queue{}
+  queuepush(q, "task1")
+  queuepush(q, "task2")
+  print(q) // => queue{"task1", "task2"}
+```
+
+### `queuepop(q queue{T}) T`
+
+Removes and returns the front element of the queue.
+
+**Example**
+
+```cpp
+- q = queue{"task1", "task2"}
+  - front = queuepop(q)
+  print(front) // => "task1"
+  print(q) // => queue{"task2"}
+```
+
+### `queuefront(q queue{T}) T`
+
+Returns the front element of the queue without removing it.
+
+**Example**
+
+```cpp
+- q = queue{"task1", "task2"}
+  print(queuefront(q)) // => "task1"
 ```
