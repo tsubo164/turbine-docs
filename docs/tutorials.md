@@ -176,7 +176,7 @@ Turbine supports standard arithmetic and comparison operators. Expressions are e
 | Operator | Description         | Example       |
 |----------|---------------------|---------------|
 | `&&`     | Logical AND         | `a and b`     |
-| `\|\|`   | Logical OR          | `a or b`      |
+| `||`     | Logical OR          | `a or b`      |
 | `!`      | Logical NOT         | `not a`       |
 
 Expressions can be combined and grouped with parentheses `()` as needed:
@@ -193,7 +193,7 @@ Turbine supports common bitwise operators for integer values:
 | Operator | Description          | Example      |
 |----------|----------------------|--------------|
 | `&`      | Bitwise AND          | `a & b`      |
-| `\|`     | Bitwise OR           | `a \| b`     |
+| `|`      | Bitwise OR           | `a | b`      |
 | `^`      | Bitwise XOR          | `a ^ b`      |
 | `~`      | Bitwise NOT          | `~a`         |
 | `<<`     | Left shift           | `a << 1`     |
