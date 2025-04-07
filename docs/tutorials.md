@@ -22,17 +22,25 @@
     - [Logical Operators](#logical-operators)
     - [Bitwise Operators](#bitwise-operators)
   - [Statements](#statements)
-    - [if Statement](#if-statement)
-    - [for Statement](#for-statement)
-    - [while Statement](#while-statement)
-    - [break Statement](#break-statement)
-    - [continue Statement](#continue-statement)
-    - [switch Statement](#switch-statement)
-    - [return Statement](#return-statement)
-    - [nop Statement](#nop-statement)
+    - [`if` Statement](#if-statement)
+    - [`for` Statement](#for-statement)
+    - [`while` Statement](#while-statement)
+    - [`break` Statement](#break-statement)
+    - [`continue` Statement](#continue-statement)
+    - [`switch` Statement](#switch-statement)
+    - [`return` Statement](#return-statement)
+    - [`nop` Statement](#nop-statement)
   - [Functions](#functions)
     - [Function Definition](#function-definition)
     - [Calling Functions](#calling-functions)
+  - [Structures](#structures)
+    - [Defining a Structure](#defining-a-structure)
+    - [Creating and Accessing Structures](#creating-and-accessing-structures)
+    - [Nested Structures](#nested-structures)
+    - [Passing Structs to Functions](#passing-structs-to-functions)
+  - [Enums](#enums)
+    - [Defining an Enum](#defining-an-enum)
+    - [Using Enum Values](#using-enum-values)
   - [Module Import](#module-import)
     - [Built-in Modules](#built-in-modules)
     - [User-defined Modules](#user-defined-modules)
@@ -289,7 +297,7 @@ print(b >> 1)     // 1 (001)
 
 Turbine provides various statements to define the flow and structure of your program. These include conditional branches, loops, and control flow modifiers.
 
-### if Statement
+### `if` Statement
 
 Executes code based on a condition:
 
@@ -302,7 +310,7 @@ else
   print("Zero")
 ```
 
-### for Statement
+### `for` Statement
 
 The `for` statement has several syntaxes based on the collection type being iterated over.
 
@@ -391,7 +399,7 @@ for val in myqueue
 
 - Like with stack, this iteration is non-destructive.
 
-### while Statement
+### `while` Statement
 
 The while loop repeatedly executes a block of code as long as the specified condition remains true.
 
@@ -404,7 +412,7 @@ while i < 5
 
 The loop starts by checking the condition (i < 5). If it’s true, the loop body executes. The condition is checked again after each iteration, and the loop continues until the condition is false.
 
-### break Statement
+### `break` Statement
 
 The break statement exits from the nearest loop, causing the program to continue after the loop ends.
 
@@ -415,7 +423,7 @@ for i in 1..10
   print(i)
 ```
 
-### continue Statement
+### `continue` Statement
 
 The continue statement skips the current iteration of the loop and moves to the next iteration.
 
@@ -428,7 +436,7 @@ for i in 1..10
 
 The break statement terminates the loop entirely, while continue skips the current loop iteration but allows the loop to continue.
 
-### switch Statement
+### `switch` Statement
 
 The switch statement evaluates an expression and selects the block of code to execute based on matching values. It does not fall through.
 
@@ -445,7 +453,7 @@ switch op
 - case → Defines a possible value for the expression being evaluated. The code block under the case executes if the value matches the switch expression.
 - default → Provides a fallback code block if none of the case values match. It is optional but useful for handling unexpected cases.
 
-### return Statement
+### `return` Statement
 The return statement ends the execution of a function and sends a value back to the caller.
 
 ```cpp
@@ -462,7 +470,7 @@ The return statement ends the execution of a function and sends a value back to 
 ```
 You may still write return explicitly if you want to exit early, but it’s not required at the end of a void function.
 
-### nop Statement
+### `nop` Statement
 
 The `nop` statement does nothing. It serves as a placeholder when a statement is required syntactically but no action should be taken.
 
@@ -502,6 +510,127 @@ To call a function, use the function name followed by the arguments in parenthes
 - result int = add(3, 5)
 greet("Turbine")
 ```
+
+## Structures
+
+In Turbine, a structure (`struct`) is a composite data type that groups together related values. You define a struct using a section header with the struct name followed by `struct`.
+
+### Defining a Structure
+
+A struct definition starts with a heading like `## Point struct`, and its fields are declared below using the `-` syntax:
+
+```cpp
+## Point struct
+  - x int
+  - y int
+```
+
+This defines a struct Point with two fields: x and y, both of type int.
+
+### Creating and Accessing Structures
+
+To create and use struct values, write the struct name followed by field initializers in braces `{}`, using `=` to assign values.
+
+```cpp
+# main()
+  - p = Point{x = 10, y = 20}
+  print(p.x)  // Outputs: 10
+  print(p.y)  // Outputs: 20
+```
+
+### Nested Structures
+
+You can define structs that include other structs:
+
+```cpp
+## Circle struct
+  - center Point
+  - radius float
+
+# main()
+  - c = Circle{center = Point{x = 5, y = 5}, radius = 10.0}
+  print(c.center.x)  // Outputs: 5
+  print(c.radius)    // Outputs: 10.0
+```
+
+This defines a `Circle` struct with a `Point` field named center and a `float` field named radius.
+
+### Passing Structs to Functions
+
+Structs can be passed to functions like any other value. Here's an example of a function that takes a `Circle` and returns its area:
+
+```cpp
+# CircleArea(c Circle) float
+  return 3.14 * c.radius * c.radius
+
+# main()
+  - c = Circle{center = Point{x = 0, y = 0}, radius = 10.0}
+  - a = CircleArea(c)
+  print(a)  // Outputs: 314.0
+```
+
+This function computes the area of the circle using the formula `πr²` (with `π` approximated as 3.14).
+
+## Enums
+
+Enums in Turbine are user-defined types that represent a fixed set of named values. Each enum value can also store additional fields.
+
+### Defining an Enum
+
+An enum definition starts with a heading like `## Month enum`, followed by a **header row** that defines the field names. The header row must begin with a colon `:`:
+
+```cpp
+## Month enum
+  : symbol , name         , num
+  - Jan    , "January"    , 1
+  - Feb    , "February"   , 2
+  - Mar    , "March"      , 3
+  - Apr    , "April"      , 4
+  - May    , "May"        , 5
+  - Jun    , "June"       , 6
+  - Jul    , "July"       , 7
+  - Aug    , "August"     , 8
+  - Sep    , "September"  , 9
+  - Oct    , "October"    , 10
+  - Nov    , "November"   , 11
+  - Dec    , "December"   , 12
+```
+
+This defines an `enum Month` with 12 values, each having a `symbol`, a string `name`, and an integer `num`.
+
+### Using Enum Values
+
+Enum values can be accessed using dot(`.`) notation and their fields can be read just like struct fields:
+
+```cpp
+# main(args vec{string}) int
+  - m = Month.Oct
+  print(m)        // > Oct
+  print(m.name)   // > October
+  print(m.num)    // > 10
+  return 0
+```
+
+You can also define enums with floating-point fields. Here's an example for difficulty levels in a game:
+
+```cpp
+## Difficulty enum
+  : sym        , damage_coeff, time_coeff
+  - EASY       , 0.5         , 1.5
+  - NORMAL     , 1.0         , 1.0
+  - HARD       , 1.5         , 0.8
+  - NIGHTMARE  , 2.5         , 0.5
+
+# main(args vec{string}) int
+  - d = Difficulty.HARD
+  print(d)              // > 2
+  print(d.sym)          // > HARD
+  print(d.damage_coeff) // > 1.5
+  print(d.time_coeff)   // > 0.8
+  return 0
+```
+
+This can be useful for adjusting game logic or configuration based on predefined modes.
 
 ## Module Import
 

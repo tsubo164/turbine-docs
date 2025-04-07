@@ -105,7 +105,7 @@ complex abstractions.
 
 # main(args vec{string}) int
   - m = Month.Oct // Month enum
-  print(m)        // > Oct
+  print(m.symbol) // > Oct
   print(m.name)   // > October
   print(m.num)    // > 10
   return 0
