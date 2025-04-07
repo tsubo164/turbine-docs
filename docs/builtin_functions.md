@@ -1,8 +1,8 @@
-# Turbine Built-in Functions Documentation
+# Turbine Built-in Functions Reference
 
 ## Table of Contents
 
-- [Turbine Built-in Functions Documentation](#turbine-built-in-functions-documentation)
+- [Turbine Built-in Functions Reference](#turbine-built-in-functions-reference)
   - [Table of Contents](#table-of-contents)
   - [I/O and General Utilities](#io-and-general-utilities)
     - [`print(...)`](#print)
@@ -124,7 +124,7 @@ Appends a value to the end of the vector.
 - v = vec{}
   vecpush(v, 42)
   vecpush(v, 99)
-  print(v) // => vec{42, 99}
+  print(v) // => {42, 99}
 ```
 
 ### `vecclear(v vec{T})`
@@ -174,7 +174,7 @@ Adds a value to the set.
 ```cpp
 - s = set{1, 2}
   setadd(s, 3)
-  print(s) // => set{1, 2, 3}
+  print(s) // => {1, 2, 3}
 ```
 
 ### `setcontains(s set{T}, val T) bool`
@@ -237,7 +237,7 @@ Pushes a value onto the top of the stack.
 - s = stack{}
   stackpush(s, 42)
   stackpush(s, 99)
-  print(s) // => stack{42, 99}
+  print(s) // => {42, 99}
 ```
 
 ### `stackpop(s stack{T}) T`
@@ -250,7 +250,7 @@ Removes and returns the top element of the stack.
 - s = stack{1, 2, 3}
   - top = stackpop(s)
   print(top) // => 3
-  print(s) // => stack{1, 2}
+  print(s) // => {1, 2}
 ```
 
 ### `stacktop(s stack{T}) T`
@@ -301,7 +301,7 @@ Adds an element to the back of the queue.
 - q = queue{}
   queuepush(q, "task1")
   queuepush(q, "task2")
-  print(q) // => queue{"task1", "task2"}
+  print(q) // => {"task1", "task2"}
 ```
 
 ### `queuepop(q queue{T}) T`
@@ -314,7 +314,7 @@ Removes and returns the front element of the queue.
 - q = queue{"task1", "task2"}
   - front = queuepop(q)
   print(front) // => "task1"
-  print(q) // => queue{"task2"}
+  print(q) // => {"task2"}
 ```
 
 ### `queuefront(q queue{T}) T`

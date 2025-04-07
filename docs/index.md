@@ -22,7 +22,7 @@ complex abstractions.
 ## Table of Contents
 - [Language at a Glance](#language_at_a_glance)
 - [Tutorials](tutorials.md)
-- [Built-in Functions Documentation](builtin_functions.md)
+- [Built-in Functions Reference](builtin_functions.md)
 - Language Specification
 - Bytecode Specification
 
