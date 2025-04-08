@@ -23,6 +23,7 @@ complex abstractions.
 - [Language at a Glance](#language_at_a_glance)
 - [Tutorials](tutorials.md)
 - [Built-in Functions Reference](builtin_functions.md)
+- [Built-in Modules Reference](builtin_modules.md)
 - Language Specification
 - Bytecode Specification
 

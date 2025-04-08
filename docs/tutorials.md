@@ -47,6 +47,7 @@
   - [Built-in Functions](#built-in-functions)
     - [I/O Functions](#io-functions)
     - [Collection Functions](#collection-functions)
+  - [FizzBuzz Example](#fizzbuzz-example)
 
 ## Hello, World!
 The following example demonstrates a simple "Hello, World!" program in Turbine.
@@ -731,3 +732,30 @@ Example Output:
 ```
 
 These are just a few examples of the functions available for collection manipulation. For more advanced operations, refer to the library reference.
+
+## FizzBuzz Example
+
+To wrap up this tutorial, here is a complete FizzBuzz program written in Turbine. It demonstrates the basics of variable declaration, control flow, arithmetic, and output:
+
+```cpp
+# main(args vec{string}) int
+  for i in 1..100
+    if i % 15 == 0
+      print("FizzBuzz")
+    elif i % 3 == 0
+      print("Fizz")
+    elif i % 5 == 0
+      print("Buzz")
+    else
+      print(i)
+  return 0
+```
+
+This simple example uses:
+- `for` loop with a numeric range (`1..100`)
+- `%` operator for modulo
+- `if`, `elif`, and `else` for conditional logic
+- `print()` function for output
+
+With this, you should now be ready to write real Turbine code.
+For more advanced functionality, refer to the [Built-in Function Reference](builtin_functions.md) and the [Built-in Module Reference].
