@@ -758,4 +758,4 @@ This simple example uses:
 - `print()` function for output
 
 With this, you should now be ready to write real Turbine code.
-For more advanced functionality, refer to the [Built-in Function Reference](builtin_functions.md) and the [Built-in Module Reference].
+For more advanced functionality, refer to the [Built-in Function Reference](builtin_functions.md) and the [Built-in Module Reference](builtin_modules.md).

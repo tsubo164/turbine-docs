@@ -1,4 +1,4 @@
-# Turbine programming language
+# Turbine Programming Language
 
 ## Introduction
 Turbine is a lightweight, high-performance programming language
@@ -18,6 +18,7 @@ complex abstractions.
 - Compiles to bytecode
 - Executed on the Virtual Machine
 - Compler and VM are written in C11
+- Automatic memory management via garbage collection
 
 ## Table of Contents
 - [Language at a Glance](#language_at_a_glance)
