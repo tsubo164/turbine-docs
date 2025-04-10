@@ -32,6 +32,7 @@ Provides basic mathematical functions and constants.
 
 | Function Signature                     | Description                                      |
 |----------------------------------------|--------------------------------------------------|
+| `isclose(x float, y float) bool`       | Returns `true` if `x` and `y` are approximately equal using a default tolerance.               |
 | `pow(x float, y float) float`          | Returns `x` raised to the power of `y`.         |
 | `sqrt(x float) float`                 | Returns the square root of `x`.                 |
 | `abs(x float) float`                  | Returns the absolute value of `x`.              |
