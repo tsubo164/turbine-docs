@@ -17,7 +17,7 @@ complex abstractions.
 
 - Compiles to bytecode
 - Executed on the Virtual Machine
-- Compler and VM are written in C11
+- Compiler and VM are written in C11
 - Automatic memory management via garbage collection
 
 ## Table of Contents
