@@ -9,9 +9,10 @@ complex abstractions.
 
 ## Language Overview
 
+- Markdown-like syntax
 - Statically typed
 - Procedural programming
-- Explicit, markdown-like syntax
+- Built-in data structures (`vec`, `map`, `set`, `stack`, `queue`)
 
 ## Implementation
 
