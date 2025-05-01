@@ -67,11 +67,11 @@ complex abstractions.
   - v = vec{11, 22, 33}             // vector of int
   - m = map{"foo":42, "bar":99}     // map of string => int
   - s = set{212.09, 584.23, 927.32} // set of float
-  - k = stack{int}                  // stack of int
-  - q = queue{string}               // queue of string
+  - k stack{int}                    // stack of int
+  - q queue{string}                 // queue of string
   print(v)                          // > {11, 22, 33}
   print(m)                          // > {foo:42, bar:99}
-  print(s)                          // > {foo:42, bar:99}
+  print(s)                          // > {212.09, 584.23, 927.32}
   print(k)                          // > {}
   print(q)                          // > {}
   return 0
