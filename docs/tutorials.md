@@ -582,7 +582,7 @@ An enum definition starts with a heading like `## Month enum`, followed by a **h
 
 ```cpp
 ## Month enum
-  : symbol , name         , num
+  : tag    , name         , num
   - Jan    , "January"    , 1
   - Feb    , "February"   , 2
   - Mar    , "March"      , 3
@@ -597,7 +597,7 @@ An enum definition starts with a heading like `## Month enum`, followed by a **h
   - Dec    , "December"   , 12
 ```
 
-This defines an `enum Month` with 12 values, each having a `symbol`, a string `name`, and an integer `num`.
+This defines an `enum Month` with 12 values, each having a `tag`, a string `name`, and an integer `num`.
 
 ### Using Enum Values
 
@@ -616,7 +616,7 @@ You can also define enums with floating-point fields. Here's an example for diff
 
 ```cpp
 ## Difficulty enum
-  : sym        , damage_coeff, time_coeff
+  : tag        , damage_coeff, time_coeff
   - EASY       , 0.5         , 1.5
   - NORMAL     , 1.0         , 1.0
   - HARD       , 1.5         , 0.8
@@ -625,7 +625,7 @@ You can also define enums with floating-point fields. Here's an example for diff
 # main(args vec{string}) int
   - d = Difficulty.HARD
   print(d)              // > 2
-  print(d.sym)          // > HARD
+  print(d.tag)          // > HARD
   print(d.damage_coeff) // > 1.5
   print(d.time_coeff)   // > 0.8
   return 0
@@ -635,10 +635,10 @@ This can be useful for adjusting game logic or configuration based on predefined
 
 ## Module Import
 
-Turbine allows you to import built-in or user-defined modules using the > symbol.
+Turbine allows you to import built-in or user-defined modules using the `>` symbol.
 
 ### Built-in Modules
-To import a built-in module, you use the > symbol followed by the module name:
+To import a built-in module, you use the `>` symbol followed by the module name:
 
 ```cpp
 > math
