@@ -512,6 +512,47 @@ To call a function, use the function name followed by the arguments in parenthes
 greet("Turbine")
 ```
 
+### Out Parameters
+
+You can use out parameters to return an additional result by modifying a variable passed by reference.
+An out parameter is declared with `&` before its name:
+
+```cpp
+# divide(a int, b int, &ok bool) int
+  if b == 0
+    ok = false
+    return 0
+  ok = true
+  return a / b
+```
+
+When calling a function with an out parameter, prefix the variable with `&`:
+
+```cpp
+- success bool
+- result int = divide(10, 2, &success)
+```
+
+Nested calls are also allowed:
+
+```cpp
+# foo(a int, &ok bool) int
+  ok = true
+  return 2 * a
+
+# bar(&ok bool) int
+  return foo(42, &ok)
+```
+
+The following rules apply to out parameter:
+
+- Must refer to a local variable.
+- Must be assigned or passed again as an out argument inside the function.
+- After the call, the variable must be used before being passed again as an out argument, or before leaving its scope.
+- Passing a non-out parameter as an out argument is not allowed.
+- Expressions such as arr[i] or obj.field cannot be passed as out arguments.
+
+
 ## Structures
 
 In Turbine, a structure (`struct`) is a composite data type that groups together related values. You define a struct using a section header with the struct name followed by `struct`.
