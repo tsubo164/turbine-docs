@@ -544,6 +544,12 @@ Nested calls are also allowed:
   return foo(42, &ok)
 ```
 
+If you don’t need the out value, you can use `&discard` to ignore it. This automatically creates a temporary variable for the output, discards it after the call, and prevents “unused output variable” errors:
+
+```cpp
+- result int = parse_int(s, &discard)
+```
+
 The following rules apply to out parameter:
 
 - Must refer to a local variable.
