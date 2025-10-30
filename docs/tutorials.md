@@ -439,20 +439,23 @@ The break statement terminates the loop entirely, while continue skips the curre
 
 ### `switch` Statement
 
-The switch statement evaluates an expression and selects the block of code to execute based on matching values. It does not fall through.
+The `switch` statement works only with enum values, not with integers or other types. It evaluates an enum value and executes the matching code block. All enum enumerators must be covered explicitly or handled by an `others` block.
 
 ```cpp
-switch op
-  case "+"
-    print(a + b)
-  case "-"
-    print(a - b)
-  default
-    print("Unknown operator")
+switch state
+  * Idle
+    print("Waiting...")
+  * Running
+    print("Working...")
+  * Error
+    print("Something went wrong")
+  * others
+    print("Unknown state")
 ```
 
-- case → Defines a possible value for the expression being evaluated. The code block under the case executes if the value matches the switch expression.
-- default → Provides a fallback code block if none of the case values match. It is optional but useful for handling unexpected cases.
+- `*` → Defines a matching enumerator. The enum name can be omitted for brevity, so `Idle` is equivalent to matching `State.Idle`.
+- `others` → Provides a fallback for unmatched variants.
+If omitted, the compiler performs an exhaustiveness check and reports an error if not all enumerators are handled.
 
 ### `return` Statement
 The return statement ends the execution of a function and sends a value back to the caller.
@@ -671,7 +674,7 @@ You can also define enums with floating-point fields. Here's an example for diff
 
 # main(args vec{string}) int
   - d = Difficulty.HARD
-  print(d)              // > 2
+  print(d)              // > HARD
   print(d.tag)          // > HARD
   print(d.damage_coeff) // > 1.5
   print(d.time_coeff)   // > 0.8
